@@ -9,7 +9,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/dashboard/',
+  base: '/economy-trend-dashboard/',
   plugins: [
     vue({
       template: { transformAssetUrls }
