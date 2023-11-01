@@ -15,22 +15,14 @@ export const data: ChartData <'line', any> = {
       borderColor: "red",
       data: filteredleadingCycle,
       yAxisID: "y",
-      spanGaps: true,
-      parsing: {
-        xAxisKey: 'month',
-        yAxisKey: 'value'
-      }
+      spanGaps: true
     },
     {
       label: "장단기 금리차(우)",
       backgroundColor: "white",
       borderColor: "green",
       data: distance,
-      yAxisID: "y1",
-      parsing: {
-        xAxisKey: 'month',
-        yAxisKey: 'value'
-      }
+      yAxisID: "y1"
     }
   ]
 };

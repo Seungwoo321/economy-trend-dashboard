@@ -1,7 +1,7 @@
 import { kospi, leadingIndexYoyChange, cpiYoyChange } from '@/data'
 import { ChartOptions, ChartData } from 'chart.js'
 // 선행지수 전년동월비 (%) - 월별 소비자 물가 등락률 전년동월비 (%)
-const diffItems = leadingIndexYoyChange.map((item, index) => item.value - cpiYoyChange[index].value);
+const diffItems = leadingIndexYoyChange.map((item, index) => ({ ...item, value: item.value - cpiYoyChange[index].value}));
 
 export const data: ChartData<'line', any> = {
   // labels: date,

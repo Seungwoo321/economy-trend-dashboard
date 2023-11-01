@@ -1,7 +1,7 @@
 import {
   leadingCycle,
   kospi
-} from "@/data"
+} from '@/data'
 import { ChartOptions, ChartData } from 'chart.js'
 const startMonth = kospi[0].month
 const filteredleadingCycle = leadingCycle.filter(item => item.month >= startMonth)
@@ -35,28 +35,28 @@ const filteredleadingCycle = leadingCycle.filter(item => item.month >= startMont
 export const data: ChartData<'line', any> = {
   datasets: [
     {
-      label: "선행지수 순환변동치",
-      backgroundColor: "white",
-      borderColor: "red",
+      label: '선행지수 순환변동치',
+      backgroundColor: 'white',
+      borderColor: 'red',
       data: filteredleadingCycle,
-      yAxisID: "y",
+      yAxisID: 'y',
       spanGaps: true,
     },
     {
-      label: "코스피",
-      backgroundColor: "white",
-      borderColor: "blue",
+      label: '코스피',
+      backgroundColor: 'white',
+      borderColor: 'blue',
       data: kospi,
-      yAxisID: "y1",
+      yAxisID: 'y1',
       spanGaps: false
     },
 
     // {
-    //   label: "예측",
-    //   borderColor: "red",
-    //   backgroundColor: "rgba(255, 0, 0, 0.3)",
+    //   label: '예측',
+    //   borderColor: 'red',
+    //   backgroundColor: 'rgba(255, 0, 0, 0.3)',
     //   data: futures,
-    //   yAxisID: "y",
+    //   yAxisID: 'y',
     //   borderDash: [3, 3]
     // }
   ]
@@ -69,7 +69,7 @@ export const options: ChartOptions<any> = {
   },
   responsive: true,
   interaction: { 
-    mode: "index",
+    mode: 'index',
     intersect: false
   },
   radius: 0,
@@ -101,7 +101,7 @@ export const options: ChartOptions<any> = {
   plugins: {
     // title: {
     //   display: true,
-    //   text: "선행지수 순환변동치와 주가"
+    //   text: '선행지수 순환변동치와 주가'
     // },
     legend: {
       display: false
@@ -109,17 +109,17 @@ export const options: ChartOptions<any> = {
     // annotation: {
     //   annotations: {
     //     annotation: {
-    //       type: "line",
-    //       borderColor: "#000",
+    //       type: 'line',
+    //       borderColor: '#000',
     //       borderWidth: 2,
     //       display: true,
     //       label: {
     //         display: true,
-    //         content: "2023.07 (Now)",
-    //         position: "start"
+    //         content: '2023.07 (Now)',
+    //         position: 'start'
     //       },
-    //       scaleID: "x",
-    //       value: "2023.07"
+    //       scaleID: 'x',
+    //       value: '2023.07'
     //       // borderDash: [6, 6]
     //     }
     //   }

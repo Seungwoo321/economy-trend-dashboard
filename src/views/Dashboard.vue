@@ -20,7 +20,7 @@
           <v-card-title>
             선행지수와 주가
           </v-card-title>
-          <leadingCycleAndKospiChart />
+          <KospiAndLeadingCycle />
         </v-card>
       </v-col>
       <v-col md="4">
@@ -28,7 +28,7 @@
           <v-card-title>
             물가와 주가
           </v-card-title>
-          <cpiAndKospiChart />
+          <KospiAndCpi />
       </v-card>
       </v-col>
         <v-col md="4">
@@ -36,7 +36,7 @@
             <v-card-title>
               장단기금리차
             </v-card-title>
-            <leadingCycleAndYieldChart />
+            <LeadingCycleAndYield />
           </v-card>
         </v-col>
     </v-row>
@@ -46,7 +46,15 @@
           <v-card-title>
             경기순환
           </v-card-title>
-          <coincidentCycleChart/>
+          <CoincidentCycle/>
+        </v-card>
+      </v-col>
+      <v-col md="4">
+        <v-card>
+          <v-card-title>
+            일평균 수출금액
+          </v-card-title>
+          <KospiAndDailyExportAmount />
         </v-card>
       </v-col>
     </v-row>
@@ -54,8 +62,9 @@
 </template>
 
 <script lang="ts" setup>
-import coincidentCycleChart from '@/components/coincidentCycleChart/Index.vue'
-import leadingCycleAndKospiChart from '@/components/leadingCycleAndKospiChart/Index.vue'
-import leadingCycleAndYieldChart from '@/components/leadingCycleAndYieldChart/Index.vue'
-import cpiAndKospiChart from '@/components/cpiAndKospiChart/Index.vue'
+import CoincidentCycle from '@/components/CoincidentCycle/Index.vue'
+import KospiAndLeadingCycle from '@/components/KospiAndLeadingCycle/Index.vue'
+import LeadingCycleAndYield from '@/components/LeadingCycleAndYield/Index.vue'
+import KospiAndCpi from '@/components/KospiAndCpi/Index.vue'
+import KospiAndDailyExportAmount from '@/components/KospiAndDailyExportAmount/Index.vue'
 </script>
