@@ -1,5 +1,5 @@
 import { economicCycle, coincidentCycle } from "@/data";
-import { TooltipItem, ChartType } from 'chart.js'
+import { TooltipItem, ChartType, ChartOptions, ChartData } from 'chart.js'
 interface ContractionBoxOptions {
   [key: string]: {
     type: string;
@@ -22,26 +22,33 @@ const contractionBoxOptions = economicCycle.reduce((acc: ContractionBoxOptions, 
     xMax: coincidentCycle.findIndex((v) => v.month === cur.referenceDays.nextLowPoint),
     yMin,
     yMax,
-    borderColor: "rgba(200, 200, 200, 0.3)",
+    borderColor: 'rgba(200, 200, 200, 0.3)',
     backgroundColor: "rgba(200, 200, 200, 0.3)"
   };
   return acc;
 }, {});
 
-export const data = {
-  labels: coincidentCycle.map(value => value.month),
+export const data: ChartData<any> = {
   datasets: [
     {
       label: "동행지수 순환변동치",
-      backgroundColor: "#dedede",
-      borderColor: "#000",
-      data: coincidentCycle.map(value => value.value),
+      backgroundColor: "#fff",
+      borderColor: "#fff",
+      data: coincidentCycle,
       yAxisID: "y"
     }
   ]
 };
 
-export const options = {
+export const options: ChartOptions<any> = {
+  parsing: {
+    xAxisKey: 'month',
+    yAxisKey: 'value'
+  },
+  interaction: {
+    mode: "index",
+    intersect: false
+  },
   responsive: true,
   radius: 0,
   stacked: false,

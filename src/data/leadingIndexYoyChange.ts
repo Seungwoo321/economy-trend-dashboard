@@ -1,8 +1,8 @@
-import { BaseItem } from "@/types"
+import { DataPoint } from "@/types"
 
 // 선행지수 전년동월비(%)
 
-export const data: BaseItem[] = [
+export const data: DataPoint[] = [
   // {
   //   month: '1970.01',
   //   value: 0.0

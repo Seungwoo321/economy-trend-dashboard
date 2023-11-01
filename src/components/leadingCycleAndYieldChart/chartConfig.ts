@@ -1,34 +1,45 @@
 import { yield1Year, yield10Year, leadingCycle } from '@/data'
-import { ChartOptions } from 'chart.js'
+import { ChartOptions, ChartData } from 'chart.js'
 
 // 장단기 금리차 (10y - 1y)
-const distance = yield10Year.map((value, index) => value.value - yield1Year[index].value);
+const distance = yield10Year.map((item, index) => ({ month: item.month, value: item.value - yield1Year[index].value }));
 
 const startMonth = yield1Year[0].month
 const filteredleadingCycle = leadingCycle.filter(item => item.month >= startMonth)
 
-export const data = {
-  labels: yield10Year.map(item => item.month),
+export const data: ChartData <'line', any> = {
   datasets: [
     {
       label: "선행지수 순환변동치(좌)",
       backgroundColor: "white",
       borderColor: "red",
-      data: filteredleadingCycle.map(item => item.value),
+      data: filteredleadingCycle,
       yAxisID: "y",
-      spanGaps: true
+      spanGaps: true,
+      parsing: {
+        xAxisKey: 'month',
+        yAxisKey: 'value'
+      }
     },
     {
       label: "장단기 금리차(우)",
       backgroundColor: "white",
-      borderColor: "blue",
+      borderColor: "green",
       data: distance,
-      yAxisID: "y1"
+      yAxisID: "y1",
+      parsing: {
+        xAxisKey: 'month',
+        yAxisKey: 'value'
+      }
     }
   ]
 };
 
 export const options: ChartOptions<any> = {
+  parsing: {
+    xAxisKey: 'month',
+    yAxisKey: 'value'
+  },
   responsive: true,
   interaction: {
     mode: "index",
@@ -83,7 +94,7 @@ export const options: ChartOptions<any> = {
       annotations: {
         annotation: {
           type: "line",
-          borderColor: "#000",
+          borderColor: "#fff",
           borderWidth: 1,
           display: true,
           label: {

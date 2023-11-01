@@ -1,7 +1,6 @@
-import { BaseItem } from "@/types"
-
+import { DataPoint } from "@/types"
 // 코스피 지수
-export const data:BaseItem[] = [
+export const data: DataPoint[] = [
   {
     month: '2000.02',
     value: 828.38

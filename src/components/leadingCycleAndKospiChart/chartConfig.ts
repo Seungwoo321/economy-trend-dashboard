@@ -2,7 +2,7 @@ import {
   leadingCycle,
   kospi
 } from "@/data"
-import { ChartOptions } from 'chart.js'
+import { ChartOptions, ChartData } from 'chart.js'
 const startMonth = kospi[0].month
 const filteredleadingCycle = leadingCycle.filter(item => item.month >= startMonth)
 // const futuresMonth = [
@@ -32,24 +32,25 @@ const filteredleadingCycle = leadingCycle.filter(item => item.month >= startMont
 //     100.46030663483897,
 //     100.6231998823767
 //   ]);
-export const data = {
-  labels: kospi.map(item => item.month), // .concat(futuresMonth),
+export const data: ChartData<'line', any> = {
   datasets: [
     {
-      label: "코스피",
-      backgroundColor: "blue",
-      borderColor: "blue",
-      data: kospi.map(item => item.value),
-      yAxisID: "y1"
-    },
-    {
       label: "선행지수 순환변동치",
-      backgroundColor: "red",
+      backgroundColor: "white",
       borderColor: "red",
-      data: filteredleadingCycle.map(item => item.value),
+      data: filteredleadingCycle,
       yAxisID: "y",
       spanGaps: true,
     },
+    {
+      label: "코스피",
+      backgroundColor: "white",
+      borderColor: "blue",
+      data: kospi,
+      yAxisID: "y1",
+      spanGaps: false
+    },
+
     // {
     //   label: "예측",
     //   borderColor: "red",
@@ -62,6 +63,10 @@ export const data = {
 };
 
 export const options: ChartOptions<any> = {
+  parsing: {
+    xAxisKey: 'month',
+    yAxisKey: 'value'
+  },
   responsive: true,
   interaction: { 
     mode: "index",

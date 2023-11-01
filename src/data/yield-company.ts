@@ -1,7 +1,7 @@
-import { BaseItem } from "@/types"
+import { DataPoint } from "@/types"
 
 // 회사채수익율(AA-,평균)
-export const data: BaseItem[] = [
+export const data: DataPoint[] = [
   {
     month: '2008.01',
     value: 6.64

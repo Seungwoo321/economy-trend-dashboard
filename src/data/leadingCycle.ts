@@ -1,7 +1,7 @@
-import { BaseItem } from "@/types"
+import { DataPoint } from "@/types"
 
 // 선행지수 순환변동치
-export const data: BaseItem[] = [
+export const data: DataPoint[] = [
   {
     month: '1970.01',
     value: 101.0

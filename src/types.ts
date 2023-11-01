@@ -1,4 +1,4 @@
-export interface EconomicCycle {
+export interface EconomicCycleDataPoint {
   cycleNumber: number;
   referenceDays: {
     lowPoint: string;
@@ -13,7 +13,7 @@ export interface EconomicCycle {
   isPublished: boolean;
 }
 
-export interface BaseItem {
+export interface DataPoint {
   month: string,
   value: number
 }

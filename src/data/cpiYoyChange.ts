@@ -1,8 +1,7 @@
-import { BaseItem } from "@/types"
-
+import { DataPoint } from "@/types"
 // 월별 소비자 물가 등락률 전년 동월비 (%)
 
-export const data: BaseItem[] = [
+export const data: DataPoint[] = [
   // {
   //   month: '1966.01',
   //   value: 7.4

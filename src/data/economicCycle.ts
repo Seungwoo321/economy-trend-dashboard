@@ -1,7 +1,7 @@
-import { EconomicCycle } from '../types'
+import { EconomicCycleDataPoint } from '@/types'
 
 // 경기순환
-export const data: EconomicCycle[] = [
+export const data: EconomicCycleDataPoint[] = [
   {
     cycleNumber: 1,
     referenceDays: {
