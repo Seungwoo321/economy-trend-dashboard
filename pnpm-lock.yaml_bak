@@ -17,9 +17,6 @@ dependencies:
   core-js:
     specifier: ^3.29.0
     version: 3.33.1
-  lru-cache:
-    specifier: ^10.0.1
-    version: 10.0.1
   pinia:
     specifier: ^2.0.0
     version: 2.1.7(typescript@5.2.2)(vue@3.3.7)
@@ -27,7 +24,7 @@ dependencies:
     specifier: '*'
     version: 0.10.0
   vue:
-    specifier: ^3.3.7
+    specifier: ^3.2.0
     version: 3.3.7(typescript@5.2.2)
   vue-chartjs:
     specifier: ^5.2.0
@@ -43,9 +40,6 @@ devDependencies:
   '@babel/types':
     specifier: ^7.21.4
     version: 7.23.0
-  '@types/lru-cache':
-    specifier: ^7.10.10
-    version: 7.10.10
   '@types/node':
     specifier: ^18.15.0
     version: 18.18.7
@@ -377,13 +371,6 @@ packages:
 
   /@types/json-schema@7.0.14:
     resolution: {integrity: sha512-U3PUjAudAdJBeC2pgN8uTIKgxrb4nlDF3SF0++EldXQvQBGkpFZMSnwQiIoDU77tv45VgNkl/L4ouD+rEomujw==}
-    dev: true
-
-  /@types/lru-cache@7.10.10:
-    resolution: {integrity: sha512-nEpVRPWW9EBmx2SCfNn3ClYxPL7IktPX12HhIoSc/H5mMjdeW3+YsXIpseLQ2xF35+OcpwKQbEUw5VtqE4PDNA==}
-    deprecated: This is a stub types definition. lru-cache provides its own type definitions, so you do not need this installed.
-    dependencies:
-      lru-cache: 10.0.1
     dev: true
 
   /@types/node@18.18.7:
@@ -1310,10 +1297,6 @@ packages:
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
     dev: true
-
-  /lru-cache@10.0.1:
-    resolution: {integrity: sha512-IJ4uwUTi2qCccrioU6g9g/5rvvVl13bsdczUUcqbciD9iLr095yj8DQKdObriEvuNSx325N1rV1O0sJFszx75g==}
-    engines: {node: 14 || >=16.14}
 
   /lru-cache@6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}

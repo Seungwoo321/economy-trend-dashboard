@@ -13,15 +13,17 @@
     "chart.js": "^4.4.0",
     "chartjs-plugin-annotation": "^3.0.1",
     "core-js": "^3.29.0",
+    "lru-cache": "^10.0.1",
     "pinia": "^2.0.0",
     "roboto-fontface": "*",
-    "vue": "^3.2.0",
+    "vue": "^3.3.7",
     "vue-chartjs": "^5.2.0",
     "vue-router": "^4.0.0",
     "vuetify": "^3.0.0"
   },
   "devDependencies": {
     "@babel/types": "^7.21.4",
+    "@types/lru-cache": "^7.10.10",
     "@types/node": "^18.15.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",
