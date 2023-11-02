@@ -28,7 +28,7 @@ const contractionBoxOptions = economicCycle.reduce((acc: ContractionBoxOptions, 
   return acc;
 }, {});
 
-export const data: ChartData<any> = {
+export const data: ChartData<'line', any> = {
   datasets: [
     {
       label: "동행지수 순환변동치",
@@ -70,10 +70,6 @@ export const options: ChartOptions<any> = {
     }
   },
   plugins: {
-    // title: {
-    //   display: true,
-    //   text: "동행지수 순환변동치와 경기순환"
-    // },
     legend: {
       display: false
     },

@@ -57,6 +57,24 @@
           <KospiAndDailyExportAmount />
         </v-card>
       </v-col>
+      <v-col md="4">
+        <v-card>
+          <v-card-title>
+            수출입동향 지역별(%)
+          </v-card-title>
+          <ExportByLocations />
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col md="4">
+        <v-card>
+          <v-card-title>
+            금리의 위험구조
+          </v-card-title>
+          <CreditSpread />
+        </v-card>
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -67,4 +85,6 @@ import KospiAndLeadingCycle from '@/components/KospiAndLeadingCycle/Index.vue'
 import LeadingCycleAndYield from '@/components/LeadingCycleAndYield/Index.vue'
 import KospiAndCpi from '@/components/KospiAndCpi/Index.vue'
 import KospiAndDailyExportAmount from '@/components/KospiAndDailyExportAmount/Index.vue'
+import ExportByLocations from '@/components/ExportByLocations/Index.vue'
+import CreditSpread from '@/components/CreditSpread/Index.vue'
 </script>
