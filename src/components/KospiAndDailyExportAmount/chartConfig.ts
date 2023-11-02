@@ -6,7 +6,7 @@ const filteredKospi = kospi.filter(item => item.month >= startMonth)
 export const data: ChartData<'line', any> = {
   datasets: [
     {
-      label: '일평균 수출 금액',
+      label: '일평균 수출금액(좌)',
       backgroundColor: 'white',
       borderColor: 'yellow',
       data: dailyExportAmount,
@@ -14,7 +14,7 @@ export const data: ChartData<'line', any> = {
       spanGaps: true,
     },
     {
-      label: '코스피',
+      label: '코스피(우)',
       backgroundColor: 'white',
       borderColor: 'blue',
       data: filteredKospi,
@@ -25,7 +25,7 @@ export const data: ChartData<'line', any> = {
 }
 
 export  const options: ChartOptions<any> = {
-    parsing: {
+  parsing: {
     xAxisKey: 'month',
     yAxisKey: 'value'
   },

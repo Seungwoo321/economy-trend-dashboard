@@ -35,7 +35,7 @@ const filteredleadingCycle = leadingCycle.filter(item => item.month >= startMont
 export const data: ChartData<'line', any> = {
   datasets: [
     {
-      label: '선행지수 순환변동치',
+      label: '선행지수 순환변동치(좌)',
       backgroundColor: 'white',
       borderColor: 'red',
       data: filteredleadingCycle,
@@ -43,7 +43,7 @@ export const data: ChartData<'line', any> = {
       spanGaps: true,
     },
     {
-      label: '코스피',
+      label: '코스피(우)',
       backgroundColor: 'white',
       borderColor: 'blue',
       data: kospi,

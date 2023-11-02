@@ -34,7 +34,7 @@
         <v-col md="4">
           <v-card>
             <v-card-title>
-              장단기금리차
+              선행지수와 장단기금리차
             </v-card-title>
             <LeadingCycleAndYield />
           </v-card>
@@ -52,7 +52,7 @@
       <v-col md="4">
         <v-card>
           <v-card-title>
-            일평균 수출금액
+            일평균 수출금액과 주가
           </v-card-title>
           <KospiAndDailyExportAmount />
         </v-card>

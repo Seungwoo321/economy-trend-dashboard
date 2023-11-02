@@ -7,20 +7,20 @@ export const data: ChartData<'line', any> = {
   // labels: date,
   datasets: [
     {
-      label: "코스피",
-      backgroundColor: "white",
-      borderColor: "blue",
-      data: kospi,
-      yAxisID: "y"
-    },
-    {
-      label: "선행지수와 물가상승률 차이",
+      label: "선행지수와 물가상승률 차이(좌)",
       backgroundColor: "white",
       borderColor: "red",
       data: diffItems,
-      yAxisID: "y1",
+      yAxisID: "y",
       spanGaps: true
-    }
+    },
+    {
+      label: "코스피(우)",
+      backgroundColor: "white",
+      borderColor: "blue",
+      data: kospi,
+      yAxisID: "y1"
+    },
   ]
 };
 
