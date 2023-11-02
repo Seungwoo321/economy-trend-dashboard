@@ -72,7 +72,7 @@ export const options: ChartOptions<any> = {
       display: true,
       position: "left",
       grid: {
-        drawOnChartArea: true
+        drawOnChartArea: false
       }
     }
   },

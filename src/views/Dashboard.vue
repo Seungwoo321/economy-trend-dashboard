@@ -1,19 +1,5 @@
 <template>
   <v-container>
-    <!-- <v-row>
-        <v-col md="3">
-            1
-        </v-col>
-        <v-col md="3">
-            2
-        </v-col>
-        <v-col md="3">
-            3
-        </v-col>
-        <v-col md="3">
-            4
-        </v-col>
-    </v-row> -->
     <v-row>
       <v-col md="4">
         <v-card>
@@ -67,12 +53,20 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col md="4">
+      <v-col md="6">
         <v-card>
           <v-card-title>
             금리의 위험구조
           </v-card-title>
           <CreditSpread />
+        </v-card>
+      </v-col>
+      <v-col md="6">
+        <v-card>
+          <v-card-title>
+            통화 및 유동성
+          </v-card-title>
+          <KospiM2Ratio />
         </v-card>
       </v-col>
     </v-row>
@@ -87,4 +81,5 @@ import KospiAndCpi from '@/components/KospiAndCpi/Index.vue'
 import KospiAndDailyExportAmount from '@/components/KospiAndDailyExportAmount/Index.vue'
 import ExportByLocations from '@/components/ExportByLocations/Index.vue'
 import CreditSpread from '@/components/CreditSpread/Index.vue'
+import KospiM2Ratio from '@/components/KospiM2Ratio/Index.vue'
 </script>

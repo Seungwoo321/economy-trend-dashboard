@@ -7,7 +7,7 @@ const creditSpreads = yield3Year.map((item, index) => {
     value: yieldCompany[index].value - item.value
   }
 })
-console.log(yieldCompany)
+
 export const data: ChartData<'line', any> = {
   datasets: [
     {
@@ -29,7 +29,7 @@ export const data: ChartData<'line', any> = {
     {
       label: '신용스프레드',
       backgroundColor: 'white',
-      borderColor: 'white',
+      borderColor: '#000',
       yAxisID: 'y',
       data: creditSpreads,
       spanGaps: true,
@@ -66,7 +66,7 @@ export const options: ChartOptions<any> = {
       display: true,
       position: "left",
       grid: {
-        drawOnChartArea: true
+        drawOnChartArea: false
       }
     }
   },
