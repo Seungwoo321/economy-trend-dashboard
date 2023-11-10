@@ -2,7 +2,7 @@
   <v-app-bar flat>
     <v-app-bar-title>
       <v-icon icon="mdi-circle-slice-6" />
-      대시보드
+      경제지표 대시보드
     </v-app-bar-title>
   </v-app-bar>
 </template>
