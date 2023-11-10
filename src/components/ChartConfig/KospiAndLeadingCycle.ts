@@ -126,3 +126,5 @@ export const options: ChartOptions<any> = {
     // }
   }
 };
+
+export default  { data, options }

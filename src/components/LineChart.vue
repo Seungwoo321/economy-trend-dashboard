@@ -11,10 +11,11 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from "chart.js"
 import { Line } from "vue-chartjs"
-import { data, options } from "./chartConfig"
 import annotationPlugin from "chartjs-plugin-annotation"
+defineProps(['data', 'options'])
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -23,6 +24,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
+  Filler,
   annotationPlugin
 );
 </script>
