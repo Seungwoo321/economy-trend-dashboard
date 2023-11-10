@@ -2,11 +2,10 @@
   <v-container>
     <v-row>
       <v-col md="4">
-        <v-card>
+        <v-card
+        >
           <v-card-title>
               선행지수와 주가
-              <!-- <v-icon size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand-all"></v-icon> -->
-              <v-btn class="float-end" size="x-small" color="surface-variant" variant="text" icon="mdi-arrow-expand"  @click="dialog = true"></v-btn>
               <v-dialog
                 v-model="dialog"
               >
@@ -16,13 +15,14 @@
                   </v-card-title>
                   <v-card-text>
                     <LineChart
+                      height="450px"
                       :data="kospiAndLeadingCycleConfig.data"
                       :options="kospiAndLeadingCycleConfig.options"
                     />
                   <v-spacer></v-spacer>
                   <v-table
                     fixed-header
-                    height="300px"
+                    height="400px"
                   >
                     <thead>
                       <tr>
@@ -59,20 +59,19 @@
                 </v-card>
               </v-dialog>
           </v-card-title>
-          <v-spacer></v-spacer>
           <v-card-text>
             <LineChart
               :data="kospiAndLeadingCycleConfig.data"
               :options="kospiAndLeadingCycleConfig.options"
             />
           </v-card-text>
-          <!-- <v-card-actions> -->
-            <!-- <v-spacer></v-spacer> -->
+          <v-card-actions>
+            <v-spacer></v-spacer>
               <!-- <v-btn size="small" color="surface-variant" variant="text" icon="mdi-heart"></v-btn> -->
               <!-- <v-btn size="small" color="surface-variant" variant="text" icon="mdi-bookmark"></v-btn> -->
-              <!-- <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn> -->
-              <!-- <v-btn size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand"></v-btn> -->
-          <!-- </v-card-actions> -->
+              <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal"></v-btn>
+              <v-btn size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand" @click="dialog = true"></v-btn>
+          </v-card-actions>
         </v-card>
       </v-col>
       <v-col md="4">
@@ -174,4 +173,8 @@ import {
   leadingCycleAndYieldConfig
 } from '@/components/ChartConfig'
 const dialog = ref(false)
+const goPostExternal = () => {
+  window.open('https://blog.naver.com/swlee_dev/223214271325', '_blank')
+}
+
 </script>
