@@ -120,4 +120,7 @@ export const options: ChartOptions<any> = {
   }
 };
 
-export default  { data, options }
+export const tableData = {
+  economicCycle, coincidentCycle
+}
+export default  { data, options, tableData }

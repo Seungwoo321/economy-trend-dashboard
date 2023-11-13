@@ -1,13 +1,15 @@
 import { kospiMarketCap, m2Balance } from "@/data";
 import { TooltipItem, ChartType, ChartData, ChartOptions } from "chart.js";
 
-const kospiM2Ratio = kospiMarketCap.map((item, index) => {
+const tmpkospiM2Ratio = kospiMarketCap.map((item, index) => {
   return {
     month: item.month,
-    value: (item.value / 1000000000) / m2Balance[index].value * 100
+    value: (item.value / 1000000000) / m2Balance[index].value * 100,
   }
 })
-const average = kospiM2Ratio.reduce((acc, cur) => cur.value + acc, 0) / kospiM2Ratio.length
+const average = tmpkospiM2Ratio.reduce((acc, cur) => cur.value + acc, 0) / tmpkospiM2Ratio.length
+
+const kospiM2Ratio = tmpkospiM2Ratio.map(item => ({...item, percent: ((item?.value ?? 0) - average) / average * 100}))
 export const data: ChartData<'line', any> = {
   datasets: [
     {
@@ -61,7 +63,7 @@ export const options: ChartOptions<any> = {
         afterLabel: function (tooltipItem: TooltipItem<ChartType>) {
           const label = tooltipItem.label;
           const item = kospiM2Ratio.find(v => v.month === label);
-          const percent = ((item?.value ?? 0) - average) / average * 100
+          const percent = (item?.percent ?? 0)
           let description = ''
           if (percent < 0) {
             description += `(평균대비 ${Math.abs(percent).toFixed(2)}% 만큼 저평가되어 있습니다.)`
@@ -91,4 +93,9 @@ export const options: ChartOptions<any> = {
   }
 }
 
-export default  { data, options }
+export const tableData = {
+  kospiM2Ratio,
+  average
+}
+
+export default  { data, options, tableData }

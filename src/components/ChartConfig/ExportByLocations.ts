@@ -83,4 +83,12 @@ export const options: ChartOptions<any> = {
   }
 };
 
-export default  { data, options }
+export const tableData = {
+  date,
+  usa: usa.map(totalMapper),
+  china: china.map(totalMapper),
+  eu: eu.map(totalMapper),
+  asean: asean.map(totalMapper)
+}
+
+export default  { data, options, tableData }

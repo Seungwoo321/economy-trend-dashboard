@@ -80,4 +80,9 @@ export const options: ChartOptions<any> = {
   }
 }
 
-export default  { data, options }
+export const tableData = {
+  yield3Year,
+  yieldCompany,
+  creditSpreads
+}
+export default  { data, options, tableData }

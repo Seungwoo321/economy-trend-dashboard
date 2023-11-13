@@ -101,4 +101,9 @@ export const options: ChartOptions<any> = {
   }
 };
 
-export default  { data, options }
+export const tableData = {
+  leadingCycle: filteredleadingCycle,
+  distance
+}
+
+export default  { data, options, tableData }

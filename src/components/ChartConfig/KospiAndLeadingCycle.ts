@@ -127,4 +127,9 @@ export const options: ChartOptions<any> = {
   }
 };
 
-export default  { data, options }
+export const tableData = {
+  kospi,
+  leadingCycle: filteredleadingCycle
+}
+
+export default  { data, options, tableData }

@@ -70,4 +70,9 @@ export const options: ChartOptions<any> = {
   }
 };
 
-export default  { data, options }
+export const tableData = {
+  kospi,
+  diffItems
+}
+
+export default  { data, options, tableData }

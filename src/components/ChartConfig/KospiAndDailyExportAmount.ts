@@ -24,7 +24,7 @@ export const data: ChartData<'line', any> = {
   ]
 }
 
-export  const options: ChartOptions<any> = {
+export const options: ChartOptions<any> = {
   parsing: {
     xAxisKey: 'month',
     yAxisKey: 'value'
@@ -67,4 +67,9 @@ export  const options: ChartOptions<any> = {
   }
 }
 
-export default  { data, options }
+export const tableData = {
+  kospi: filteredKospi,
+  dailyExportAmount
+}
+
+export default  { data, options, tableData }
