@@ -344,7 +344,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('kospiAndDailyExportAmount')"></v-btn>
+            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('kospiAndDailyExportAmount')" disabled></v-btn>
             <v-btn size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand" @click="toggleDialog('kospiAndDailyExportAmount')"></v-btn>
           </v-card-actions>
         </v-card>
@@ -492,7 +492,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('creditSpread')"></v-btn>
+            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('creditSpread')" disabled></v-btn>
             <v-btn size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand" @click="toggleDialog('creditSpread')"></v-btn>
           </v-card-actions>
         </v-card>
@@ -557,7 +557,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('kospiM2Ratio')"></v-btn>
+            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('kospiM2Ratio')" disabled></v-btn>
             <v-btn size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand" @click="toggleDialog('kospiM2Ratio')"></v-btn>
           </v-card-actions>
         </v-card>
