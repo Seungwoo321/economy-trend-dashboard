@@ -12,7 +12,6 @@
       </LineChart>
       <v-spacer></v-spacer>
       <slot name="table" :tableData="chartConfig.tableData">
-      1111
       </slot>
     </v-card-text>
   </v-card>

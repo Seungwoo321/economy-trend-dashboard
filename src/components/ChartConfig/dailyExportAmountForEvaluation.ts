@@ -1,26 +1,19 @@
-import { kospiMarketCap, m2Balance } from "@/data";
+import { dailyExportAmountForEvaluation } from '@/data'
 import { ChartOptions, ChartData, TooltipItem, ChartType } from 'chart.js'
 
-const tmpkospiM2Ratio = kospiMarketCap.map((item, index) => {
-  return {
-    month: item.month,
-    value: (item.value / 1000000000) / m2Balance[index].value * 100,
-  }
-})
-const average = tmpkospiM2Ratio.reduce((acc, cur) => cur.value + acc, 0) / tmpkospiM2Ratio.length
 
-const kospiM2Ratio = tmpkospiM2Ratio.map(item => ({...item, percent: ((item?.value ?? 0) - average) / average * 100}))
-export const data: ChartData<'line', any> = {
+export const data: ChartData <'line', any> = {
   datasets: [
     {
-      label: "코스피시가총액/M2 비중추이",
+      label: "주가 적정수준",
       backgroundColor: "white",
-      borderColor: 'red',
-      data: kospiM2Ratio,
+      borderColor: "green",
+      data: dailyExportAmountForEvaluation,
       yAxisID: "y",
+      spanGaps: true
     }
   ]
-}
+};
 
 export const options: ChartOptions<any> = {
   parsing: {
@@ -28,7 +21,6 @@ export const options: ChartOptions<any> = {
     yAxisKey: 'value'
   },
   responsive: true,
-  cubicInterpolationMode: "monotone",
   interaction: {
     mode: "index",
     intersect: false
@@ -62,13 +54,13 @@ export const options: ChartOptions<any> = {
       callbacks: {
         afterLabel: function (tooltipItem: TooltipItem<ChartType>) {
           const label = tooltipItem.label;
-          const item = kospiM2Ratio.find(v => v.month === label);
-          const percent = (item?.percent ?? 0)
+          const item = dailyExportAmountForEvaluation.find(v => v.month === label);
+          const percent = (item?.value ?? 0)
           let description = ''
           if (percent < 0) {
-            description += `(평균대비 ${Math.abs(percent).toFixed(2)}% 만큼 저평가되어 있습니다.)`
+            description += `(일평균수출금액 대비 ${Math.abs(percent).toFixed(2)}% 만큼 저평가되어 있습니다.)`
           } else if (percent > 0) {
-            description += `(평균대비 ${percent.toFixed(2)}% 만큼 고평가되어 있습니다.)`
+            description += `(일평균수출금액 대비 ${percent.toFixed(2)}% 만큼 고평가되어 있습니다.)`
           }
           return description;
         }
@@ -85,17 +77,16 @@ export const options: ChartOptions<any> = {
             display: false
           },
           scaleID: "y",
-          value: average,
+          value: "0",
           borderDash: [6, 6]
         }
       }
     }
   }
-}
+};
 
 export const tableData = {
-  kospiM2Ratio,
-  average
+  dailyExportAmountForEvaluation
 }
 
 export default  { data, options, tableData }

@@ -562,6 +562,71 @@
           </v-card-actions>
         </v-card>
       </v-col>
+      <v-col md="4">
+        <v-card>
+          <v-card-title>
+            일평균 수출금액으로 주가 수준 평가
+            <v-dialog
+              v-model="dialog.dailyExportAmountForEvaluation"
+            >
+              <ModalDetail
+                title="일평균 수출금액으로 주가 수준 평가" 
+                :chartConfig="chartConfig.dailyExportAmountForEvaluation"
+              >
+                <template v-slot:table="{ tableData }">
+                  <v-table
+                    fixed-header
+                    height="400px"
+                  >
+                    <thead>
+                      <tr>
+                        <th>
+                          시점
+                        </th>
+                        <th>
+                          주가 수준
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="(item, index) in tableData.dailyExportAmountForEvaluation"
+                        :key="index"
+                      >
+                        <td>
+                          {{ item.month }}
+                        </td>
+                        <td>
+                          {{ item.value.toFixed(3) }}
+                          (
+                            <small v-if="item.value < 0">
+                              {{ Math.abs(item.value).toFixed(2) }}% 만큼 저평가되어 있습니다.
+                            </small>
+                            <small v-else-if="item.value > 0">
+                              {{ item.value.toFixed(2) }}% 만큼 고평가되어 있습니다.
+                            </small>
+                          )
+                        </td>
+                      </tr>
+                    </tbody>
+                  </v-table>
+                </template>
+              </ModalDetail>
+            </v-dialog>
+          </v-card-title>
+          <v-card-text>
+            <LineChart 
+              :data="chartConfig.dailyExportAmountForEvaluation.data"
+              :options="chartConfig.dailyExportAmountForEvaluation.options"
+            />
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('dailyExportAmountForEvaluation')" disabled></v-btn>
+            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand" @click="toggleDialog('dailyExportAmountForEvaluation')"></v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -578,7 +643,8 @@ import {
   kospiAndDailyExportAmountConfig,
   kospiAndLeadingCycleConfig,
   kospiM2RatioConfig,
-  leadingCycleAndYieldConfig
+  leadingCycleAndYieldConfig,
+  dailyExportAmountForEvaluationConfig
 } from '@/components/ChartConfig'
 import { ChartData, ChartOptions } from 'chart.js';
 
@@ -590,7 +656,8 @@ type ChartName =
   | 'kospiAndDailyExportAmount'
   | 'kospiAndLeadingCycle'
   | 'kospiM2Ratio'
-  | 'leadingCycleAndYield';
+  | 'leadingCycleAndYield'
+  | 'dailyExportAmountForEvaluation';
 
 interface DialogStatus extends Record<ChartName, boolean> {}
 
@@ -611,7 +678,8 @@ const dialog = ref<DialogStatus>({
   kospiAndDailyExportAmount: false,
   kospiAndLeadingCycle: false,
   kospiM2Ratio: false,
-  leadingCycleAndYield: false
+  leadingCycleAndYield: false,
+  dailyExportAmountForEvaluation: false
 })
 
 const links: Links = {
@@ -622,7 +690,8 @@ const links: Links = {
   kospiAndDailyExportAmount: '',
   kospiAndLeadingCycle: 'https://blog.naver.com/swlee_dev/223214271325',
   kospiM2Ratio: '',
-  leadingCycleAndYield: 'https://blog.naver.com/swlee_dev/223231486823'
+  leadingCycleAndYield: 'https://blog.naver.com/swlee_dev/223231486823',
+  dailyExportAmountForEvaluation: ''
 }
 
 const chartConfig: ChartConfig = {
@@ -633,7 +702,8 @@ const chartConfig: ChartConfig = {
   kospiAndDailyExportAmount: kospiAndDailyExportAmountConfig,
   kospiAndLeadingCycle: kospiAndLeadingCycleConfig,
   kospiM2Ratio: kospiM2RatioConfig,
-  leadingCycleAndYield: leadingCycleAndYieldConfig
+  leadingCycleAndYield: leadingCycleAndYieldConfig,
+  dailyExportAmountForEvaluation: dailyExportAmountForEvaluationConfig
 }
 
 const toggleDialog = (key: ChartName) => {
