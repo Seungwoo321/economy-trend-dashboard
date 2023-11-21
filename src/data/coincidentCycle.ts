@@ -1,6 +1,6 @@
 import { DataPoint } from "@/types"
 
-// 동행지수 순환변동치
+// (1) KOSIS_다운로드_경기종합지수 - 동행지수 순환변동치
 export const data: DataPoint[] = [
   {
     month: '1970.01',
@@ -2577,5 +2577,9 @@ export const data: DataPoint[] = [
   {
     month: '2023.08',
     value: 99.4
+  },
+  {
+    month: '2023.09',
+    value: 99.3
   }
 ]

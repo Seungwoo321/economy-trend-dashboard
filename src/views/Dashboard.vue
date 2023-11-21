@@ -505,7 +505,7 @@
               v-model="dialog.kospiM2Ratio"
             >
               <ModalDetail
-                title="금리의 위험구조" 
+                title="통화 및 유동성" 
                 :chartConfig="chartConfig.kospiM2Ratio"
               >
                 <template v-slot:table="{ tableData }">

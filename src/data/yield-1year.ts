@@ -754,4 +754,8 @@ export const data: DataPoint[] = [
     month: '2023.08',
     value: 3.50
   },
+  {
+    month: '2023.09',
+    value: 3.61
+  }
 ]

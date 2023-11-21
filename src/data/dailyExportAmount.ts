@@ -1,6 +1,6 @@
 import { DataPoint } from "@/types"
-// 일평균 수출금액
 
+// (3) 산업통상자원부_수기_일별수출금액 - 일평균 수출금액
 export const data: DataPoint[] = [
   {
     month: '2005.01',
@@ -855,51 +855,55 @@ export const data: DataPoint[] = [
     value: 26.60 
   },
   {
-  month: '2022.10',
-  value: 24.40 
+    month: '2022.10',
+    value: 24.40 
   },
   {
-  month: '2022.11',
-  value: 21.60 
+    month: '2022.11',
+    value: 21.60 
   },
   {
-  month: '2022.12',
-  value: 22.40 
+    month: '2022.12',
+    value: 22.40 
   },
   {
-  month: '2023.01',
-  value: 21.60 
+    month: '2023.01',
+    value: 21.60 
   },
   {
-  month: '2023.02',
-  value: 22.70 
+    month: '2023.02',
+    value: 22.70 
   },
   {
-  month: '2023.03',
-  value: 22.90 
+    month: '2023.03',
+    value: 22.90 
   },
   {
-  month: '2023.04',
-  value: 22.00 
+    month: '2023.04',
+    value: 22.00 
   },
   {
-  month: '2023.05',
-  value: 24.20 
+    month: '2023.05',
+    value: 24.20 
   },
   {
-  month: '2023.06',
-  value: 23.60 
+    month: '2023.06',
+    value: 23.60 
   },
   {
-  month: '2023.07',
-  value: 21.50 
+    month: '2023.07',
+    value: 21.50 
   },
   {
-  month: '2023.08',
-  value: 21.60 
+    month: '2023.08',
+    value: 21.60 
   },
   {
-  month: '2023.09',
-  value: 26.00 
+    month: '2023.09',
+    value: 26.00 
+  },
+  {
+    month: '2023.10',
+    value: 26.20 
   }
 ]
