@@ -2,6 +2,95 @@
   <v-container>
     <v-row>
       <v-col md="4">
+        <v-card>
+          <v-card-title>
+            경기순환
+            <v-dialog
+              v-model="dialog.coincidentCycle"
+            >
+              <ModalDetail
+                title="경기순환" 
+                :chartConfig="chartConfig.coincidentCycle"
+              >
+                <template v-slot:table="{ tableData }">
+                  <v-table
+                    fixed-header
+                    height="400px"
+                  >
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th
+                          class="text-center"
+                          colspan="3"
+                        >
+                          기준순환일
+                        </th>
+                        <th
+                          class="text-center"
+                          colspan="3"
+                        >
+                          지속기간 (개월)
+                        </th>
+                      </tr>
+                      <tr>
+                        <th></th>
+                        <th class="text-center">저점</th>
+                        <th class="text-center">정점</th>
+                        <th class="text-center">저점</th>
+                        <th class="text-center">확장기</th>
+                        <th class="text-center">수축기</th>
+                        <th class="text-center">순환기</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="(item, index) in tableData.economicCycle"
+                        :key="index"
+                      >
+                        <td class="text-center">
+                          제 {{ item.cycleNumber }} 순환기
+                        </td>
+                        <td class="text-center">
+                          {{ item.referenceDays.lowPoint }}
+                        </td>
+                        <td class="text-center">
+                          {{ item.referenceDays.highPoint }}
+                        </td>
+                        <td class="text-center">
+                          {{ item.referenceDays.nextLowPoint }}
+                        </td>
+                        <td class="text-center">
+                          {{ item.durationMonths.expansion }}
+                        </td>
+                        <td class="text-center">
+                          {{ item.durationMonths.contraction }}
+                        </td>
+                        <td class="text-center">
+                          {{ item.durationMonths.totalCycle }}
+                        </td>
+                      </tr>
+                    </tbody>
+
+                  </v-table>
+                </template>
+              </ModalDetail>
+            </v-dialog>
+          </v-card-title>
+          <v-card-text>
+            <LineChart
+              :data="chartConfig.coincidentCycle.data"
+              :options="chartConfig.coincidentCycle.options"
+            />
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('coincidentCycle')"></v-btn>
+            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand" @click="toggleDialog('coincidentCycle')"></v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+      <v-col md="4">
         <v-card
         >
           <v-card-title>
@@ -130,6 +219,9 @@
           </v-card-actions>
       </v-card>
       </v-col>
+
+    </v-row>
+    <v-row>
       <v-col md="4">
         <v-card>
           <v-card-title>
@@ -194,240 +286,7 @@
           </v-card-actions>
         </v-card>
       </v-col>
-    </v-row>
-    <v-row>
-      <v-col md="4">
-        <v-card>
-          <v-card-title>
-            경기순환
-            <v-dialog
-              v-model="dialog.coincidentCycle"
-            >
-              <ModalDetail
-                title="경기순환" 
-                :chartConfig="chartConfig.coincidentCycle"
-              >
-                <template v-slot:table="{ tableData }">
-                  <v-table
-                    fixed-header
-                    height="400px"
-                  >
-                    <thead>
-                      <tr>
-                        <th></th>
-                        <th
-                          class="text-center"
-                          colspan="3"
-                        >
-                          기준순환일
-                        </th>
-                        <th
-                          class="text-center"
-                          colspan="3"
-                        >
-                          지속기간 (개월)
-                        </th>
-                      </tr>
-                      <tr>
-                        <th></th>
-                        <th class="text-center">저점</th>
-                        <th class="text-center">정점</th>
-                        <th class="text-center">저점</th>
-                        <th class="text-center">확장기</th>
-                        <th class="text-center">수축기</th>
-                        <th class="text-center">순환기</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr
-                        v-for="(item, index) in tableData.economicCycle"
-                        :key="index"
-                      >
-                        <td class="text-center">
-                          제 {{ item.cycleNumber }} 순환기
-                        </td>
-                        <td class="text-center">
-                          {{ item.referenceDays.lowPoint }}
-                        </td>
-                        <td class="text-center">
-                          {{ item.referenceDays.highPoint }}
-                        </td>
-                        <td class="text-center">
-                          {{ item.referenceDays.nextLowPoint }}
-                        </td>
-                        <td class="text-center">
-                          {{ item.durationMonths.expansion }}
-                        </td>
-                        <td class="text-center">
-                          {{ item.durationMonths.contraction }}
-                        </td>
-                        <td class="text-center">
-                          {{ item.durationMonths.totalCycle }}
-                        </td>
-                      </tr>
-                    </tbody>
-
-                  </v-table>
-                </template>
-              </ModalDetail>
-            </v-dialog>
-          </v-card-title>
-          <v-card-text>
-            <LineChart
-              :data="chartConfig.coincidentCycle.data"
-              :options="chartConfig.coincidentCycle.options"
-            />
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('coincidentCycle')"></v-btn>
-            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand" @click="toggleDialog('coincidentCycle')"></v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-      <v-col md="4">
-        <v-card>
-          <v-card-title>
-            일평균 수출금액과 주가
-            <v-dialog
-              v-model="dialog.kospiAndDailyExportAmount"
-            >
-              <ModalDetail
-                title="일평균 수출금액과 주가" 
-                :chartConfig="chartConfig.kospiAndDailyExportAmount"
-              >
-                <template v-slot:table="{ tableData }">
-                  <v-table
-                    fixed-header
-                    height="400px"
-                  >
-                    <thead>
-                      <tr>
-                        <th>
-                          시점
-                        </th>
-                        <th>
-                          일평균 수출금액(좌)
-                        </th>
-                        <th>
-                          코스피(우)
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr
-                        v-for="(item, index) in tableData.kospi"
-                        :key="index"
-                      >
-                        <td>
-                          {{ item.month }}
-                        </td>
-                        <td>
-                          {{ item.value }}
-                        </td>
-                        <td>
-                          {{ tableData.dailyExportAmount[index].value }}
-                        </td>
-                      </tr>
-                    </tbody>
-
-                  </v-table>
-                </template>
-              </ModalDetail>
-            </v-dialog>
-          </v-card-title>
-          <v-card-text>
-            <LineChart 
-              :data="chartConfig.kospiAndDailyExportAmount.data"
-              :options="chartConfig.kospiAndDailyExportAmount.options"
-            />
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('kospiAndDailyExportAmount')" disabled></v-btn>
-            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand" @click="toggleDialog('kospiAndDailyExportAmount')"></v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-      <v-col md="4">
-        <v-card>
-          <v-card-title>
-            수출입동향 지역별(%)
-            <v-dialog
-              v-model="dialog.exportByLocations"
-            >
-              <ModalDetail
-                title="수출입동향 지역별(%)" 
-                :chartConfig="chartConfig.exportByLocations"
-              >
-                <template v-slot:table="{ tableData }">
-                  <v-table
-                    fixed-header
-                    height="400px"
-                  >
-                    <thead>
-                      <tr>
-                        <th>
-                          시점
-                        </th>
-                        <th>
-                          미국
-                        </th>
-                        <th>
-                          중국
-                        </th>
-                        <th>
-                          유럽
-                        </th>
-                        <th>
-                          아세안
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr
-                        v-for="(month, index) in tableData.date"
-                        :key="index"
-                      >
-                        <td>
-                          {{ month }}
-                        </td>
-                        <td>
-                          {{ tableData.usa[index].toFixed(3) }}
-                        </td>
-                        <td>
-                          {{ tableData.china[index].toFixed(3) }}
-                        </td>
-                        <td>
-                          {{ tableData.eu[index].toFixed(3) }}
-                        </td>
-                        <td>
-                          {{ tableData.asean[index].toFixed(3) }}
-                        </td>
-                      </tr>
-                    </tbody>
-
-                  </v-table>
-                </template>
-              </ModalDetail>
-            </v-dialog>
-          </v-card-title>
-          <v-card-text>
-            <LineChart 
-              :data="chartConfig.exportByLocations.data"
-              :options="chartConfig.exportByLocations.options"
-            />
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('exportByLocations')"></v-btn>
-            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand" @click="toggleDialog('exportByLocations')"></v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col md="4">
+<v-col md="4">
         <v-card>
           <v-card-title>
             금리의 위험구조
@@ -559,6 +418,148 @@
             <v-spacer></v-spacer>
             <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('kospiM2Ratio')" disabled></v-btn>
             <v-btn size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand" @click="toggleDialog('kospiM2Ratio')"></v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col md="4">
+        <v-card>
+          <v-card-title>
+            수출입동향 지역별(%)
+            <v-dialog
+              v-model="dialog.exportByLocations"
+            >
+              <ModalDetail
+                title="수출입동향 지역별(%)" 
+                :chartConfig="chartConfig.exportByLocations"
+              >
+                <template v-slot:table="{ tableData }">
+                  <v-table
+                    fixed-header
+                    height="400px"
+                  >
+                    <thead>
+                      <tr>
+                        <th>
+                          시점
+                        </th>
+                        <th>
+                          미국
+                        </th>
+                        <th>
+                          중국
+                        </th>
+                        <th>
+                          유럽
+                        </th>
+                        <th>
+                          아세안
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="(month, index) in tableData.date"
+                        :key="index"
+                      >
+                        <td>
+                          {{ month }}
+                        </td>
+                        <td>
+                          {{ tableData.usa[index].toFixed(3) }}
+                        </td>
+                        <td>
+                          {{ tableData.china[index].toFixed(3) }}
+                        </td>
+                        <td>
+                          {{ tableData.eu[index].toFixed(3) }}
+                        </td>
+                        <td>
+                          {{ tableData.asean[index].toFixed(3) }}
+                        </td>
+                      </tr>
+                    </tbody>
+
+                  </v-table>
+                </template>
+              </ModalDetail>
+            </v-dialog>
+          </v-card-title>
+          <v-card-text>
+            <LineChart 
+              :data="chartConfig.exportByLocations.data"
+              :options="chartConfig.exportByLocations.options"
+            />
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('exportByLocations')"></v-btn>
+            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand" @click="toggleDialog('exportByLocations')"></v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+      <v-col md="4">
+        <v-card>
+          <v-card-title>
+            일평균 수출금액과 주가
+            <v-dialog
+              v-model="dialog.kospiAndDailyExportAmount"
+            >
+              <ModalDetail
+                title="일평균 수출금액과 주가" 
+                :chartConfig="chartConfig.kospiAndDailyExportAmount"
+              >
+                <template v-slot:table="{ tableData }">
+                  <v-table
+                    fixed-header
+                    height="400px"
+                  >
+                    <thead>
+                      <tr>
+                        <th>
+                          시점
+                        </th>
+                        <th>
+                          일평균 수출금액(좌)
+                        </th>
+                        <th>
+                          코스피(우)
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="(item, index) in tableData.kospi"
+                        :key="index"
+                      >
+                        <td>
+                          {{ item.month }}
+                        </td>
+                        <td>
+                          {{ item.value }}
+                        </td>
+                        <td>
+                          {{ tableData.dailyExportAmount[index].value }}
+                        </td>
+                      </tr>
+                    </tbody>
+
+                  </v-table>
+                </template>
+              </ModalDetail>
+            </v-dialog>
+          </v-card-title>
+          <v-card-text>
+            <LineChart 
+              :data="chartConfig.kospiAndDailyExportAmount.data"
+              :options="chartConfig.kospiAndDailyExportAmount.options"
+            />
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('kospiAndDailyExportAmount')" disabled></v-btn>
+            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand" @click="toggleDialog('kospiAndDailyExportAmount')"></v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
