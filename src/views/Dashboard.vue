@@ -692,7 +692,7 @@ const links: Links = {
   kospiAndLeadingCycle: 'https://blog.naver.com/swlee_dev/223214271325',
   kospiM2Ratio: '',
   leadingCycleAndYield: 'https://blog.naver.com/swlee_dev/223231486823',
-  dailyExportAmountForEvaluation: ''
+  dailyExportAmountForEvaluation: 'https://blog.naver.com/swlee_dev/223270910870'
 }
 
 const chartConfig: ChartConfig = {
