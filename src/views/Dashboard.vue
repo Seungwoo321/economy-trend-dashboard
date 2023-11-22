@@ -623,7 +623,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('dailyExportAmountForEvaluation')" disabled></v-btn>
+            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-post" @click="goPostExternal('dailyExportAmountForEvaluation')"></v-btn>
             <v-btn size="small" color="surface-variant" variant="text" icon="mdi-arrow-expand" @click="toggleDialog('dailyExportAmountForEvaluation')"></v-btn>
           </v-card-actions>
         </v-card>
